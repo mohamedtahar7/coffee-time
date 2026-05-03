@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Slabo_27px } from "next/font/google";
 import "./globals.css";
+import CartProvider from "@/context/CartContext";
+import { Toaster } from "sonner";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const slabo = Slabo_27px({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-slabo", // Optional: for Tailwind CSS
 });
 
 export const metadata: Metadata = {
@@ -23,11 +23,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${slabo.className} h-full antialiased`}>
+      <CartProvider>
+        <body className="min-h-full flex flex-col">
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              // This ensures the description text is visible against the dark background
+              style: {
+                background: "#3D2314",
+                color: "#FCF9F5",
+              },
+            }}
+          />
+        </body>
+      </CartProvider>
     </html>
   );
 }
