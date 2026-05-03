@@ -149,17 +149,19 @@ const Menu = () => {
   const handleAddToBag = (item: MenuItem) => {
     addToCart(item);
 
-    // Theme-aligned feedback
+    // Updated feedback with visible description text
     toast.success(`${item.name} added to bag`, {
       description: "Item successfully added to your order.",
       duration: 2000,
       style: {
         background: "#3D2314", // Deep brown background
-        color: "#FCF9F5", // Cream text
+        color: "#FCF9F5", // Cream text for title
         border: "1px solid #C19A6B", // Gold border accent
       },
-      // This ensures the icon and description also match the cream text
-      className: "group",
+      classNames: {
+        // Force the description to use the cream color with slight opacity
+        description: "text-[#FCF9F5]/80",
+      },
     });
   };
 

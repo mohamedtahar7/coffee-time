@@ -4,13 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const About = () => {
-  const fadeIn = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" },
-  };
-
   const stats = [
     { label: "Years of Craft", value: "10+" },
     { label: "Global Roasts", value: "24" },
@@ -21,7 +14,14 @@ const About = () => {
     <section id="about" className="bg-[#FCF9F5] py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <motion.div {...fadeIn} className="text-center mb-20">
+        {/* FIX: Inlined motion props to prevent TS spread errors */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-20"
+        >
           <span className="text-[#C19A6B] text-sm font-bold uppercase tracking-[0.3em]">
             Since 2016
           </span>
@@ -51,6 +51,7 @@ const About = () => {
                 className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>
+
             {/* Decorative Floating Card */}
             <motion.div
               initial={{ y: 20 }}
@@ -63,8 +64,10 @@ const About = () => {
               }}
               className="absolute -bottom-10 -right-6 md:-right-10 bg-[#3D2314] p-8 rounded-xl shadow-xl z-20 hidden md:block"
             >
+              {/* FIX: Escaped quotes and apostrophe */}
               <p className="text-white font-serif italic text-xl">
-                "It's more than a drink, <br /> it's a ritual."
+                &quot;It&apos;s more than a drink, <br /> it&apos;s a
+                ritual.&quot;
               </p>
             </motion.div>
           </motion.div>
@@ -86,10 +89,11 @@ const About = () => {
               Every bean is ethically sourced and roasted in small batches to
               ensure the unique character of its origin shines through.
             </p>
+            {/* FIX: Escaped apostrophe in "it's" */}
             <p className="text-[#5C3D2E] text-lg leading-relaxed">
-              Whether it’s a morning espresso or a slow pour-over on a rainy
-              afternoon, we believe every cup tells a story of craftsmanship and
-              dedication.
+              Whether it&apos;s a morning espresso or a slow pour-over on a
+              rainy afternoon, we believe every cup tells a story of
+              craftsmanship and dedication.
             </p>
 
             {/* Stats Grid */}

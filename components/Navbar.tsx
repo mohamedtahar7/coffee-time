@@ -78,14 +78,6 @@ const Navbar = () => {
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg leading-none tracking-tighter text-[#3D2314] uppercase">
-                Gosto<span className="text-[#C19A6B]">.</span>
-              </span>
-              <span className="text-[10px] text-[#5C3D2E] font-medium tracking-[0.2em] uppercase">
-                Biskra
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
