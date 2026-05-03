@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { FiArrowRight, FiPlay } from "react-icons/fi";
 import { Slabo_27px } from "next/font/google";
@@ -13,7 +12,7 @@ const slabo = Slabo_27px({
 });
 
 const Hero = () => {
-  // FIX: Explicitly typing variants as 'Variants' to resolve TS errors
+  // Animation Variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -77,19 +76,20 @@ const Hero = () => {
             className="text-[#5C3D2E] text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-light"
           >
             Experience the art of slow-roasted perfection. We source our beans
-            sustainably to bring you a cup that's as ethical as it is delicious.
+            sustainably to bring you a cup that&apos;s as ethical as it is
+            delicious.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap gap-5">
             <Link
-              href={"#menu"}
+              href="#menu"
               className="px-8 py-4 bg-[#3D2314] text-[#F5EBE0] rounded-full font-bold flex items-center gap-3 hover:bg-[#5C3D2E] transition-all group shadow-xl"
             >
               Order Online
               <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href={"#about"}
+              href="#about"
               className="px-8 py-4 border border-[#3D2314]/20 text-[#3D2314] rounded-full font-bold flex items-center gap-3 hover:bg-white/50 transition-all group"
             >
               <span className="w-10 h-10 rounded-full bg-[#C19A6B]/20 flex items-center justify-center text-[#C19A6B] group-hover:bg-[#C19A6B] group-hover:text-white transition-colors">
@@ -128,12 +128,11 @@ const Hero = () => {
         >
           {/* Main Hero Image Frame */}
           <div className="relative w-[300px] h-[450px] md:w-[450px] md:h-[600px] rounded-[2rem] overflow-hidden shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-700 bg-stone-200">
-            {/* FIX: Restored Next.js Image component for 'fill' and 'priority' props */}
             <img
               src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1000&auto=format&fit=crop"
               alt="Freshly brewed coffee"
-              className="object-cover"
-              priority
+              className="w-full h-full object-cover"
+              loading="eager"
             />
           </div>
 
@@ -146,7 +145,7 @@ const Hero = () => {
             <img
               src="https://i.postimg.cc/d02ncCqX/coffee-log2o.png"
               alt="Coffee Time Badge"
-              className="object-contain p-4"
+              className="w-full h-full object-contain p-4"
             />
           </motion.div>
 
